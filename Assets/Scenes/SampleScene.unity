@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 493bfb50af5d9424da505ba945c86600, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 97637a2a763b7f24b8da4e139e4144ca, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0007200976, g: 0.0008675759, b: 0.419518, a: 1}
+  m_IndirectSpecularColor: {r: 0.0007200191, g: 0.0018433576, b: 0.05432608, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -783,9 +783,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1172785827, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: lifetime
+    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].inSlope
+      value: -0.53538483
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inSlope
+      value: -0.9881483
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].outSlope
+      value: -0.53538483
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inWeight
+      value: 0.18620688
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outSlope
+      value: -0.9881483
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].outWeight
+      value: 0.13448276
       objectReference: {fileID: 0}
     - target: {fileID: 5160074541477451124, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
       propertyPath: m_Name
@@ -834,10 +862,6 @@ PrefabInstance:
     - target: {fileID: 5160074541477451127, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5160074541689504330, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: m_Name
-      value: Powerup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
