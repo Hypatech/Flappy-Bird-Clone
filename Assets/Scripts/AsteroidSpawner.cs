@@ -22,10 +22,12 @@ public class AsteroidSpawner : MonoBehaviour
         if(Time.time > nextTime){
             nextTime = Time.time + Random.Range(0, 2);   
             var go = Instantiate(asteroidPrefab);
-            go.transform.position += Vector3.up * Random.Range(-5, 5);
-            go.GetComponent<Asteroid>().speed += Random.Range(-speedVariation, speedVariation);
+            go.transform.position += Vector3.up * Random.Range(-5.5f, 6f);
+            var related = Random.Range(-speedVariation, speedVariation);
+            go.GetComponent<Asteroid>().speed += related;
             go.GetComponent<Asteroid>().shake = shake;
-            Destroy(go, 10);
+            go.transform.localScale = Vector3.one - (Vector3.one * related / speedVariation) * 0.55f;
+            Destroy(go, 5);
         }
     }
 }
