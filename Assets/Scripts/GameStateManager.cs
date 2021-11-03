@@ -10,7 +10,7 @@ public class GameStateManager : MonoBehaviour
 
     public float scoreInterval;
 
-    public Action PlayerDied;
+    public Action PlayerDeath;
     public Action<GameObject> AsteroidDeath;
 
     public bool dead {get; private set;}
@@ -18,5 +18,29 @@ public class GameStateManager : MonoBehaviour
     void Awake(){
         Instance = this;
         Debug.Log(Instance == null);
+    }
+
+    void OnEnable(){
+        PlayerDeath += StopTime;
+    }
+
+    void OnDisable(){
+        PlayerDeath -= StopTime;
+    }
+
+    void StopTime(){
+        StartCoroutine(StopTimeCoroutine());
+    }
+
+    IEnumerator StopTimeCoroutine(){
+        var i = 0f;
+        while(i < 1){
+            Time.timeScale = Mathf.Lerp(1, 0, i);
+            Debug.Log(i);
+            i += Time.unscaledDeltaTime * 0.5f;
+            yield return new WaitForEndOfFrame();
+        }
+
+        Time.timeScale = 0;
     }
 }

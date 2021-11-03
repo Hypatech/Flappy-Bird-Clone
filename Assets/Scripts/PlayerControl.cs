@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    public static PlayerControl Instance;
+
+    public ScreenShake shake;
+
     public float jumpSpeed, gravity, fastGravity;
     public float maxHeight;
     public Rigidbody rb;
@@ -11,10 +15,36 @@ public class PlayerControl : MonoBehaviour
     public Vector3 velocity;
     float curGravity;
 
+    public bool powerup;
+
+    public int health = 3;
+
+    public GameObject nonPowerModel;
+    public GameObject powerModel;
+
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         rb = GetComponent<Rigidbody>();
+    }
+
+    void OnEnable(){
+        GameStateManager.Instance.AsteroidDeath += TakeDamage;
+    }
+
+    void OnDisable(){
+        GameStateManager.Instance.AsteroidDeath -= TakeDamage;
+    }
+
+    void TakeDamage(GameObject go){
+        health--;
+        if(health <= 0){
+            shake.trauma += 2;
+            this.enabled = false;
+            nonPowerModel.SetActive(false);
+            GameStateManager.Instance.PlayerDeath?.Invoke();
+        }
     }
 
     // Update is called once per frame
@@ -29,6 +59,9 @@ public class PlayerControl : MonoBehaviour
         } else{
             curGravity = gravity;
         }
+
+        powerModel.SetActive(powerup);
+        nonPowerModel.SetActive(!powerup);
     }
 
     void FixedUpdate(){
@@ -45,5 +78,5 @@ public class PlayerControl : MonoBehaviour
         rb.position += velocity * Time.fixedDeltaTime;
     }
 
-    
+
 }

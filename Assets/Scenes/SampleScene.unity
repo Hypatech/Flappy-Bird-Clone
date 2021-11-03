@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0007200191, g: 0.0018433576, b: 0.05432608, a: 1}
+  m_IndirectSpecularColor: {r: 0.0008510157, g: 0.0018434842, b: 0.054547586, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194231}
   - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
@@ -491,6 +492,19 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a4bde03596b7f93a1d1c64489b572e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomFov: 90
 --- !u!1 &999298750
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,6 +790,24 @@ MonoBehaviour:
   asteroidPrefab: {fileID: 6573463045552424701, guid: 4b17f602f7c5921e3a9b9c234cbc822c, type: 3}
   speedVariation: 4
   nextTime: 0
+--- !u!1 &1419822368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5160074541477451124, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+  m_PrefabInstance: {fileID: 5160074540901670200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1419822369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419822368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d5389abbd755220a2aabd6713e14d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4931519505473257307, guid: b1e4895882e14b91087c8f17f9c80fa4, type: 3}
 --- !u!1001 &5160074540901670200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -783,42 +815,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].inSlope
-      value: -0.53538483
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inSlope
-      value: -0.9881483
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].outSlope
-      value: -0.53538483
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inWeight
-      value: 0.18620688
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outSlope
-      value: -0.9881483
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172785828, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].outWeight
-      value: 0.13448276
-      objectReference: {fileID: 0}
     - target: {fileID: 5160074541477451124, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5160074541477451126, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
+      propertyPath: shake
+      value: 
+      objectReference: {fileID: 963194229}
     - target: {fileID: 5160074541477451127, guid: b666872e3594f6e4f99d1623082030a6, type: 3}
       propertyPath: m_RootOrder
       value: 2

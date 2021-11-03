@@ -16,6 +16,18 @@ public class AsteroidSpawner : MonoBehaviour
         
     }
 
+    void OnEnable(){
+        GameStateManager.Instance.AsteroidDeath += ShakeCam;
+    }
+    
+    void OnDisable(){
+        GameStateManager.Instance.AsteroidDeath -= ShakeCam;
+    }
+
+    void ShakeCam(GameObject asteroid){
+        shake.trauma += 1;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +37,6 @@ public class AsteroidSpawner : MonoBehaviour
             go.transform.position += Vector3.up * Random.Range(-5.5f, 6f);
             var related = Random.Range(-speedVariation, speedVariation);
             go.GetComponent<Asteroid>().speed += related;
-            go.GetComponent<Asteroid>().shake = shake;
             go.transform.localScale = Vector3.one - (Vector3.one * related / speedVariation) * 0.55f;
             Destroy(go, 5);
         }

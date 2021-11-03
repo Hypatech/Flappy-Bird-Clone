@@ -19,6 +19,18 @@ public class ScoreHud : MonoBehaviour
     int _score;
     float _timer;
 
+    void OnEnable(){
+        GameStateManager.Instance.PlayerDeath += DisableMe;
+    }
+
+    void OnDisable(){
+        GameStateManager.Instance.PlayerDeath -= DisableMe;
+    }
+
+    void DisableMe(){
+        this.enabled = false;
+    }
+
     void Update(){
         _timer += Time.deltaTime;
         if(_timer > scoreInterval){

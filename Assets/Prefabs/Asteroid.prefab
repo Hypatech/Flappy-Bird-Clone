@@ -127,7 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31eaa4b39bb0cd96aac7f207ca1444b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shake: {fileID: 0}
   speed: 12
   rb: {fileID: 6573463045552424700}
 --- !u!54 &6573463045552424700
@@ -143,7 +142,7 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 3
 --- !u!65 &2080998911835143969
