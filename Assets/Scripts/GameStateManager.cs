@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-1)]
 public class GameStateManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class GameStateManager : MonoBehaviour
     public float scoreInterval;
 
     public Action PlayerDeath;
+    public Action PowerupGrabbed;
     public Action<GameObject> AsteroidDeath;
 
     public bool dead {get; private set;}
@@ -28,7 +30,15 @@ public class GameStateManager : MonoBehaviour
         PlayerDeath -= StopTime;
     }
 
+    void Update(){
+        if(dead && Input.GetKeyDown(KeyCode.R)){
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
     void StopTime(){
+        dead = true;
         StartCoroutine(StopTimeCoroutine());
     }
 

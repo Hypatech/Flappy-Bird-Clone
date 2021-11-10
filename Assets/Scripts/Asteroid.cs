@@ -14,12 +14,13 @@ public class Asteroid : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.right * 10 * Time.fixedDeltaTime * speed));
         rb.position += Vector3.left * speed * Time.fixedDeltaTime;
     }
 
-    void OnTriggerEnter(Collider other){
+    protected virtual void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Player")){ 
             GameStateManager.Instance.AsteroidDeath?.Invoke(gameObject);
             Destroy(this.gameObject);

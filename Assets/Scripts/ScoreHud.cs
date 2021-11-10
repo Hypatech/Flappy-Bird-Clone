@@ -18,6 +18,7 @@ public class ScoreHud : MonoBehaviour
     }
     int _score;
     float _timer;
+    float _scoreMod;
 
     void OnEnable(){
         GameStateManager.Instance.PlayerDeath += DisableMe;
@@ -30,6 +31,7 @@ public class ScoreHud : MonoBehaviour
     void DisableMe(){
         this.enabled = false;
     }
+
 
     void Update(){
         _timer += Time.deltaTime;

@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     public static PlayerControl Instance;
 
     public ScreenShake shake;
+    public ScoreHud score;
 
     public float jumpSpeed, gravity, fastGravity;
     public float maxHeight;
@@ -16,11 +17,14 @@ public class PlayerControl : MonoBehaviour
     float curGravity;
 
     public bool powerup;
+    float powerupEnd;
 
     public int health = 3;
 
     public GameObject nonPowerModel;
     public GameObject powerModel;
+
+    public GameObject explodeParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -31,20 +35,39 @@ public class PlayerControl : MonoBehaviour
 
     void OnEnable(){
         GameStateManager.Instance.AsteroidDeath += TakeDamage;
+        GameStateManager.Instance.PowerupGrabbed += PowerupGrab;
     }
 
     void OnDisable(){
         GameStateManager.Instance.AsteroidDeath -= TakeDamage;
+        GameStateManager.Instance.PowerupGrabbed -= PowerupGrab;
     }
 
     void TakeDamage(GameObject go){
+        if(powerup){
+            score.score += 5;
+            var pgo = GameObject.Instantiate(explodeParticle);
+            pgo.transform.position = transform.position;
+            Destroy(pgo, 3);
+            return;
+        }
+
         health--;
         if(health <= 0){
-            shake.trauma += 2;
+            shake.trauma += 3;
             this.enabled = false;
             nonPowerModel.SetActive(false);
             GameStateManager.Instance.PlayerDeath?.Invoke();
         }
+    }
+
+    void PowerupGrab(){
+        if(powerup){
+            score.score += 20;
+        }
+
+        powerup = true;
+        powerupEnd = Time.time + 10;
     }
 
     // Update is called once per frame
@@ -60,6 +83,10 @@ public class PlayerControl : MonoBehaviour
             curGravity = gravity;
         }
 
+        if(Time.time >= powerupEnd){
+            powerup = false;
+        }
+
         powerModel.SetActive(powerup);
         nonPowerModel.SetActive(!powerup);
     }
@@ -72,11 +99,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         if(rb.position.y < -maxHeight){
-            
+            TakeDamage(gameObject);
         }
 
         rb.position += velocity * Time.fixedDeltaTime;
     }
-
-
 }
